@@ -1,0 +1,44 @@
+.surgeon-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #f9f5f2;
+  text-align: center;
+}
+
+h1 {
+  color: #002147;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #002147;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.references,
+.education,
+.operations {
+  margin-bottom: 40px;
+}
+
+h2 {
+  color: #002147;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+li {
+  color: #002147;
+  margin-bottom: 10px;
+}

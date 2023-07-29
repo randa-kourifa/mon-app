@@ -1,0 +1,47 @@
+/* Login.css */
+body {
+  background-color: #ffffff;
+}
+
+.header {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px;
+}
+
+a {
+  color: #007bff;
+}
+
+.Button {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.Button:hover {
+  background-color: #000000;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000000;
+}
+
+.border {
+  border: 1px solid #007bff;
+}
+
+.Label {
+  margin-top: 1px;
+  display: flex;
+  justify-content: space-between;
+}
