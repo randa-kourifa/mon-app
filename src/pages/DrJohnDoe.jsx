@@ -19,8 +19,7 @@ const DrJohnDoe = () => {
   };
 
   const handleCancelAppointment = (appointmentId) => {
-    // Effectuez les actions nécessaires pour annuler le rendez-vous dans la base de données
-    // Mettez à jour la liste des rendez-vous
+   
     const updatedAppointments = appointments.filter(
       (appointment) => appointment.id !== appointmentId
     );
@@ -28,8 +27,7 @@ const DrJohnDoe = () => {
   };
 
   const handleEditAppointment = (appointmentId) => {
-    // Effectuez les actions nécessaires pour modifier le rendez-vous dans la base de données
-    // Redirigez vers la page de modification du rendez-vous
+  
   };
 
   return (

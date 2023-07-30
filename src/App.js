@@ -1,4 +1,3 @@
-// // App.js
 // import React, { useState } from "react";
 // import { Provider } from "react-redux";
 // import { Navigate, Route, Routes } from "react-router-dom";
@@ -6,7 +5,7 @@
 // import { UserContext } from "./app/User.Context";
 // import store from "./app/store";
 import backgroundImage from "./assets/pexels-anna-shvets-3786215.jpg";
-// import Home from "./pages/Home";
+import Home from "./pages/Home";
 // import AppRouter from "./routes/reactRouter.jsx";
 // function App() {
 //   const [user, setUser] = useState({
@@ -24,7 +23,7 @@ import backgroundImage from "./assets/pexels-anna-shvets-3786215.jpg";
 //       <Provider store={store}>
 //         <UserContext.Provider value={{ user, setUser }}>
 //           <Routes>
-//             <Route path="/" element={<Home />} />
+//
 //             <Route
 //               path="/admin"
 //               element={
@@ -42,20 +41,19 @@ import backgroundImage from "./assets/pexels-anna-shvets-3786215.jpg";
 // export default App;
 import React, { useState } from "react";
 import { Provider } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { UserContext } from "./app/User.Context";
 import store from "./app/store";
-import Login from "./components/login/Login";
-import Signup from "./components/signin/Signin";
-import Home from "./pages/Home";
-import AppRouter from "./routes/reactRouter.jsx";
-
+import Admin from "./pages/admin.jsx";
+import Login from "./pages/login.jsx";
+import Signin from "./pages/signin.jsx";
+import { PrivateRoute } from "./routes/PrivateRoute";
 function App() {
   const [user, setUser] = useState({
     email: "init",
     password: "init",
-    role: "", // Add role to the user state
+    role: "",
   });
 
   const backgroundStyle = {
@@ -71,35 +69,25 @@ function App() {
     width: "100%",
   };
 
-  const isAdmin = user.role === "admin"; // Check the role for admin
+  // const isAdmin = user.role === "admin"; // Check the role for admin
 
   return (
     <div style={backgroundStyle}>
       <Provider store={store}>
         <UserContext.Provider value={{ user, setUser }}>
           <Routes>
+            {" "}
             <Route path="/" element={<Home />} />
             <Route
               path="/admin"
-              element={isAdmin ? <Signup /> : <Navigate to="/admin" />}
-            />
-            <Route
-              path="/signin"
               element={
-                user.email === "init" ? <Navigate to="/admin" /> : <Signup />
+                <PrivateRoute>
+                  <Admin />
+                </PrivateRoute>
               }
             />
-            <Route
-              path="/login"
-              element={
-                user.email !== "init" ? <Navigate to="/admin" /> : <Login />
-              }
-            />
-            <Route
-              path="/signin"
-              element={user.email !== "init" ? <Navigate to="/" /> : <Signup />}
-            />
-            <Route path="/" element={<AppRouter />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </UserContext.Provider>
       </Provider>

@@ -7,8 +7,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginMutation] = useLoginMutation();
-  const navigate = useNavigate(); // Initialize the useNavigate hook
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -21,10 +20,6 @@ function Login() {
       .then((response) => {
         const token = response.token;
         console.log("Login successful. Token:", token);
-
-        // Here you can add the logic to store the token in your application, e.g., in localStorage or cookies.
-
-        // Redirect the user based on the role after successful login
         if (response.role === "admin") {
           navigate("/admin");
         } else {

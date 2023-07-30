@@ -20,7 +20,13 @@ export const apiSlice = createApi({
         body: data,
       }),
     }),
-
+    checktoken: builder.mutation({
+      query: (data) => ({
+        url: "user/checktoken",
+        method: "POST",
+        headers: { token: `${data}` },
+      }),
+    }),
     getPatient: builder.query({
       query: (data) => ({ url: "patient/:id", method: "GET", body: data }),
     }),
@@ -46,4 +52,5 @@ export const {
   useDeletePatientMutation,
   useLoginMutation,
   useSignupMutation,
+  useChecktokenMutation,
 } = apiSlice;

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
 function ReservationList({ reservations }) {
-  // État local pour stocker la liste des patients
   const [patientList, setPatientList] = useState([]);
-
-  // Fonction pour mettre à jour la liste des patients lorsqu'on appuie sur le bouton
   const handleShowPatients = () => {
     setPatientList(reservations);
   };

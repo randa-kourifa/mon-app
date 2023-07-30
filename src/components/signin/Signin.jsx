@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useSignupMutation } from "../../app/ApiSlice";
 import "./Login.css";
 function Signup() {
-  // États pour gérer les champs du formulaire
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
