@@ -6,6 +6,7 @@ import "./Login.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [loginMutation] = useLoginMutation();
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -18,14 +19,14 @@ function Login() {
 
     loginMutation(userCredentials)
       .then((response) => {
-        const token = response.token;
-        console.log("Login successful. Token:", token);
-        if (response.role === "admin") {
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        if (response.data.user.role === "admin") {
           navigate("/admin");
         } else {
           navigate("/");
         }
       })
+
       .catch((error) => {
         console.error("Login failed:", error);
       });

@@ -5,10 +5,12 @@ import Liftingfacial from "../assets/FaceLift___a.jpg";
 import diploma from "../assets/certificate-vector-template-formal-secured-260nw-1095878714.webp";
 import Liposuccion from "../assets/liposuccion.jfif";
 import Rhinoplastie from "../assets/rhinoplastie.jpg";
+import MyNavbar from "../components/NavBar/NavBar";
 import "./SurgeonPage.css";
 function SurgeonPage() {
   return (
     <div className="surgeon-page">
+      <MyNavbar />
       <h1>Dr. John Doe</h1>
       <h3>Chirurgien Plastique</h3>
       <img src={surgeon} height={400} alt="Portrait du chirurgien" />

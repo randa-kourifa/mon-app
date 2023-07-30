@@ -21,11 +21,18 @@ function Signup() {
       email,
       password,
     };
-    const isAdmin = role === "admin";
+    //const isAdmin = role === "admin";
     signupMutation(newUser)
       .then((response) => {
-        console.log("Utilisateur enregistré :", response);
-        if (isAdmin) {
+        //   console.log("Utilisateur enregistré :", response);
+        //   if (isAdmin) {
+        //     navigate("/admin");
+        //   } else {
+        //     navigate("/");
+        //   }
+        // })
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        if (response.data.user.role === "admin") {
           navigate("/admin");
         } else {
           navigate("/");

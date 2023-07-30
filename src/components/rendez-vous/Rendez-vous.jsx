@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+// Correction ici
 import { usePostPatientMutation } from "../../app/ApiSlice";
 import "./Reservation.css";
+
 function Reservation() {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [heure, setHeure] = useState("");
   const [reservations, setReservations] = useState([]);
 
-  const postPatientMutation = usePostPatientMutation();
+  //const postPatientMutation = usePostPatientMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ function Reservation() {
     };
 
     try {
-      const response = await postPatientMutation(newReservation);
+      const response = await usePostPatientMutation(newReservation);
 
       console.log("Réservation ajoutée :", response);
     } catch (error) {
@@ -36,7 +38,7 @@ function Reservation() {
   return (
     <div>
       <h2 style={{ color: "#fffff", textAlign: "center", fontSize: "50px" }}>
-        prenez rendez vous chez nous{" "}
+        prenez rendez-vous chez nous{" "}
       </h2>
       <form onSubmit={handleSubmit}>
         <label>

@@ -28,7 +28,7 @@ export const apiSlice = createApi({
       }),
     }),
     getPatient: builder.query({
-      query: (data) => ({ url: "patient/:id", method: "GET", body: data }),
+      query: (data) => ({ url: "patient/", method: "GET", body: data }),
     }),
     postPatient: builder.mutation({
       query: (data) => ({

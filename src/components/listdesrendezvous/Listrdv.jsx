@@ -1,38 +1,32 @@
 import React, { useState } from "react";
+import { useGetPatientQuery } from "../../app/ApiSlice";
 
-function ReservationList({ reservations }) {
-  const [patientList, setPatientList] = useState([]);
-  const handleShowPatients = () => {
-    setPatientList(reservations);
-  };
+function ReservationList() {
+  const [showPatients, setShowPatients] = useState(false);
+  const { data: patientsData, isLoading, isError } = useGetPatientQuery();
 
-  if (!Array.isArray(reservations) || reservations.length === 0) {
-    return (
-      <div style={{ marginTop: 50 }}>
-        <h2>Liste des réservations :</h2>
-        <div>No reservations found.</div>
-        <button onClick={handleShowPatients}>Afficher les patients</button>
-      </div>
-    );
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
+
+  if (isError) {
+    return <div>Error fetching patient data.</div>;
+  }
+
+  const handleShowPatients = () => {
+    setShowPatients(true);
+  };
 
   return (
     <div style={{ marginTop: 50 }}>
       <h2>Liste des réservations :</h2>
-      <ul>
-        {reservations.map((reservation, index) => (
-          <li key={index}>
-            Nom : {reservation.name}, Date : {reservation.date}, Heure :{" "}
-            {reservation.time}
-          </li>
-        ))}
-      </ul>
+      {/* Votre code pour afficher les réservations ici */}
       <button onClick={handleShowPatients}>Afficher les patients</button>
-      {patientList.length > 0 && (
+      {showPatients && (
         <div>
           <h2>Liste des patients :</h2>
           <ul>
-            {patientList.map((patient, index) => (
+            {patientsData.map((patient, index) => (
               <li key={index}>
                 Nom : {patient.name}, Age : {patient.age}, Sexe : {patient.sexe}
               </li>

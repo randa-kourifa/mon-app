@@ -45,6 +45,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { UserContext } from "./app/User.Context";
 import store from "./app/store";
+import About from "./pages/about.jsx";
 import Admin from "./pages/admin.jsx";
 import Login from "./pages/login.jsx";
 import Signin from "./pages/signin.jsx";
@@ -77,7 +78,8 @@ function App() {
         <UserContext.Provider value={{ user, setUser }}>
           <Routes>
             {" "}
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />{" "}
+            <Route path="/about" element={<About />} />
             <Route
               path="/admin"
               element={
