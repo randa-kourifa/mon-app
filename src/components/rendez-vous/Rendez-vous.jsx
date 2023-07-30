@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// Correction ici
 import { usePostPatientMutation } from "../../app/ApiSlice";
 import "./Reservation.css";
 
@@ -9,7 +8,7 @@ function Reservation() {
   const [heure, setHeure] = useState("");
   const [reservations, setReservations] = useState([]);
 
-  //const postPatientMutation = usePostPatientMutation();
+  const postPatientMutation = usePostPatientMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,8 +20,7 @@ function Reservation() {
     };
 
     try {
-      const response = await usePostPatientMutation(newReservation);
-
+      const response = await postPatientMutation.mutate(newReservation);
       console.log("Réservation ajoutée :", response);
     } catch (error) {
       console.error("Erreur lors de l'ajout de la réservation :", error);
@@ -34,7 +32,6 @@ function Reservation() {
     setDate("");
     setHeure("");
   };
-
   return (
     <div>
       <h2 style={{ color: "#fffff", textAlign: "center", fontSize: "50px" }}>
